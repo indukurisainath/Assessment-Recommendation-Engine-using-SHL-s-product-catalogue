@@ -4,64 +4,105 @@ This project is an AI-powered recommendation system built to suggest the most re
 
 Try it out @ https://shlassessmentrecommendationsystem.streamlit.app [Example Test Cases given below]
 
-## Features
 
-- Recommends SHL assessments based on:
-  - Job descriptions
-  - Unstructured URLs or text input
-  - Custom user queries
-- NLP-based semantic similarity matching using Sentence-BERT
-- Contextual feature extraction and filtering using Gemini 1.5 Pro (LLM)
-- Ranking and scoring using cosine similarity
-- Top recommendations output with relevance filtering
-- Streamlit-based frontend for an interactive user experience
-
-## Tech Stack
-
-- **Natural Language Processing**:
-  - Sentence-BERT for creating embeddings of assessments and queries
-  - Cosine similarity for ranking the most relevant assessments
-- **LLM Integration**:
-  - Gemini 1.5 Pro used to extract structured features (job title, skills, duration, etc.) from unstructured input
-  - Post-processing and filtering of recommendations based on constraints like duration and skill match
-- **Frontend**:
-  - Streamlit application for user-friendly interaction and display of results
-
-## How It Works
-
-1. **Data Preparation**:
-   - A mock dataset of 50 SHL-like assessments is used, each containing:
-     - Assessment name, URL, duration, test type, skills, description, remote support, and adaptive/IRT support.
-   - A "combined" column is created by concatenating all columns into a single string for embedding.
-
-2. **NLP Embedding and Retrieval**:
-   - Sentence-BERT is used to convert both dataset entries and input queries into vector embeddings.
-   - Cosine similarity is calculated to identify the top matching assessments.
-
-3. **LLM Enhancement (Gemini 1.5 Pro)**:
-   - Accepts job descriptions, URLs, or unstructured queries.
-   - Extracts meaningful structured features like job role, required skills, expected duration, etc.
-   - This information is used to generate more accurate embeddings.
-   - After retrieving top candidates, Gemini re-filters based on constraints and relevance.
-
-4. **Evaluation**:
-   - Performance is evaluated using metrics such as Recall@5 and MAP@5.
-   - The hybrid (NLP + LLM) approach outperforms the pure NLP baseline in both metrics.
-
-5. **Streamlit Interface**:
-   - Users can input queries directly in a web interface.
-   - Receives and displays the top recommended assessments along with their details.
-
-## Performance
-- NLP Model - Recall@5 = 0.85 and MAP@5 = 0.71
-- NLP + LLM Model - Recall@5 = 1.0 and MAP@5 = 1.0
   
-## Test Cases 
-- I am hiring for Java developers who can also collaborate effectively with my business teams. Looking
-for an assessment(s) that can be completed in 40 minutes.
-- Looking to hire mid-level professionals who are proficient in Python, SQL and Java Script. Need an
-assessment package that can test all skills with max duration of 60 minutes.
-- I am hiring for an analyst and wants applications to screen using Cognitive and personality tests,
-what options are available within 45 mins.
-- https://www.linkedin.com/jobs/view/research-engineer-ai-at-shl-4194768899/?originalSubdomain=in
-- Want to assess communication and teamwork skills in under 30 minutes.
+Project Overview
+
+Developed an AI-powered recommendation engine that suggests relevant SHL assessments based on job descriptions, unstructured text, URLs, or custom user queries. The system combines semantic NLP techniques with LLM-based contextual understanding to deliver accurate, ranked assessment recommendations through an interactive Streamlit interface.
+
+Key Features
+
+Recommends SHL-like assessments using:
+
+Job descriptions
+
+Unstructured text or URLs
+
+Custom user queries
+
+Semantic similarity matching using Sentence-BERT embeddings
+
+Ranking and scoring using cosine similarity
+
+Contextual feature extraction using Gemini 1.5 Pro (LLM)
+
+Constraint-based filtering (skills, duration, relevance)
+
+Displays top-N assessment recommendations
+
+Interactive Streamlit web application
+
+Tech Stack
+
+Natural Language Processing
+
+Sentence-BERT for generating embeddings
+
+Cosine similarity for ranking relevant assessments
+
+LLM Integration
+
+Gemini 1.5 Pro for extracting structured information (job role, skills, duration) from unstructured inputs
+
+Post-retrieval refinement and relevance filtering using LLM outputs
+
+Frontend
+
+Streamlit for interactive user input and result visualization
+
+How It Works
+1. Data Preparation
+
+Uses a mock dataset of 50 SHL-style assessments containing:
+
+Assessment name, URL, duration, test type, skills, description
+
+Remote proctoring and adaptive/IRT support
+
+A combined text column is created by concatenating all relevant fields to generate embeddings.
+
+2. NLP Embedding & Retrieval
+
+Dataset entries and user queries are converted into vector embeddings using Sentence-BERT.
+
+Cosine similarity is computed to retrieve the top matching assessments.
+
+3. LLM-Based Enhancement
+
+Gemini 1.5 Pro processes job descriptions, URLs, or free-text input.
+
+Extracts structured features such as:
+
+Job role
+
+Required skills
+
+Expected assessment duration
+
+Retrieved results are refined based on extracted constraints and relevance.
+
+4. Evaluation
+
+Model performance evaluated using:
+
+Recall@5
+
+MAP@5
+
+Hybrid NLP + LLM approach outperforms the NLP-only baseline.
+
+5. User Interface
+
+Streamlit app allows users to:
+
+Enter queries
+
+View ranked assessment recommendations
+
+Explore assessment details interactively
+
+Performance Metrics
+
+NLP Model: Recall@5 = 0.85, MAP@5 = 0.71
+
+NLP + LLM Model: Recall@5 = 1.0, MAP@5 = 1.0
